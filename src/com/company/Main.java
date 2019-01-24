@@ -12,16 +12,16 @@ public class Main{
         boolean play = true;
         while(play){
             int numGuesses = 0;
-            int guess= GetGuess();
+            int guess= 0;
             int answer = GenerateNumber();
             boolean correct = false;
             while(correct==false){
                 guess= GetGuess();
                 correct = CheckGuess(answer, guess);
-                numGuesses++;
+                numGuesses++;//Keep track of number of guesses
             }
 
-//Keep track of number of guesses
+            System.out.println("Correct, "+userName+ "! The secret number was " + answer +"!"+ " You got the number in "+numGuesses+" guesses.");
             System.out.println("Would you like to play again?");//once the user guesses the correct number ask if they would like to play again, exiting if they type "no" restarting if they type"yes"
             String response = reader.nextLine();
             boolean loop = true;
