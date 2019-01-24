@@ -16,8 +16,8 @@ public class Main{
             int answer = GenerateNumber();
             boolean correct = false;
             while(correct==false){
-                correct = CheckGuess(answer, guess);
                 guess= GetGuess();
+                correct = CheckGuess(answer, guess);
                 numGuesses++;
             }
 
