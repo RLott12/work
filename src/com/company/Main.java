@@ -6,6 +6,10 @@ import java.util.Random;
 public class Main{
 
     public static void main(String[] args) {
+        
+
+
+
         Scanner reader = new Scanner(System.in);
         System.out.println("What is your name?");//Allow the user to enter their name.
         String userName = reader.nextLine();
@@ -51,13 +55,11 @@ public class Main{
     }
 
     //once the user guesses the correct number ask if they would like to play again, exiting if they type "no" restarting if they type"yes"
-
     static int IntInput(String prompt) {
         Scanner reader = new Scanner(System.in);
         //Inputs: string to be used as a prompt
         String userInput = Input(prompt);//Print the prompt to the screen (use the input function created above)
         //get input from the user
-
         int guess =0;
         boolean again = true;
         while(again){//this should continue to reprompt the user and get new input until an integer is entered by the user
