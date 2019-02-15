@@ -6,12 +6,14 @@ import java.util.Random;
 public class Main{
 
     public static void main(String[] args) {
-        
-
-
-
         Scanner reader = new Scanner(System.in);
-        System.out.println("What is your name?");//Allow the user to enter their name.
+        IntInput();
+        int i = GenerateNumber();
+        int e = GetGuess();
+        CheckGuess(i,e);
+
+
+        /*System.out.println("What is your name?");//Allow the user to enter their name.
         String userName = reader.nextLine();
         boolean play = true;
         while(play){
@@ -43,31 +45,32 @@ public class Main{
                     response = reader.nextLine();
                 }
             }
-        }
+        }*/
     }
 
-    static String Input(String prompt) {
+
+    static String Input() {
         Scanner reader = new Scanner(System.in);
         //Print the prompt to the screen
-        System.out.println(prompt);
+        System.out.println("Please enter a number");
         String userInput = reader.nextLine();
         return userInput;
     }
 
     //once the user guesses the correct number ask if they would like to play again, exiting if they type "no" restarting if they type"yes"
-    static int IntInput(String prompt) {
-        Scanner reader = new Scanner(System.in);
+    static int IntInput() {
         //Inputs: string to be used as a prompt
-        String userInput = Input(prompt);//Print the prompt to the screen (use the input function created above)
+        String userInput = Input();
         //get input from the user
-        int guess =0;
+        int guess = 0;
         boolean again = true;
         while(again){//this should continue to reprompt the user and get new input until an integer is entered by the user
             try {
                 guess = Integer.parseInt(userInput);
                 again = false;
-            } catch (NumberFormatException wow) {
-                System.out.println("Please enter a number");
+            }
+            catch (NumberFormatException wow){
+                userInput = Input();
             }
         }
         //Returns: the integer that the user entered
@@ -81,14 +84,14 @@ public class Main{
     }
 
     static int GetGuess() {
-        int guess = 0;
-        boolean repeat = true;
-        while(repeat) {
-            String prompt = "Please enter a number between 1 and 100";
-            guess = IntInput(prompt);//prompt the user to guess a number between 1 and 100 (use IntInput you created to do this.
+        int guess;
+
+        while(true) {
+            guess = IntInput();//prompt the user to guess a number between 1 and 100 (use IntInput you created to do this)
             if(guess<=100&& guess >=1){
-                repeat = false;
+                break;
             }
+            System.out.println("Please enter a number between 1 and 100");
         }
         return guess;//Returns: the number the user entered (should be valid integer between 1-100 at this point)
     }
