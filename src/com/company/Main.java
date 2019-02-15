@@ -6,15 +6,8 @@ import java.util.Random;
 public class Main{
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        IntInput();
-        int i = GenerateNumber();
-        int e = GetGuess();
-        CheckGuess(i,e);
-
-
-        /*System.out.println("What is your name?");//Allow the user to enter their name.
-        String userName = reader.nextLine();
+        
+        String userName = Input("What is your name?");//Allow the user to enter their name.
         boolean play = true;
         while(play){
             int numGuesses = 0;
@@ -28,8 +21,8 @@ public class Main{
             }
 
             System.out.println("Correct, "+userName+ "! The secret number was " + answer +"!"+ " You got the number in "+numGuesses+" guesses.");
-            System.out.println("Would you like to play again?");//once the user guesses the correct number ask if they would like to play again, exiting if they type "no" restarting if they type"yes"
-            String response = reader.nextLine();
+            //once the user guesses the correct number ask if they would like to play again, exiting if they type "no" restarting if they type"yes"
+            String response = Input("Would you like to play again?");
             boolean loop = true;
             while(loop){
                 if (response.equals("yes") || response.equals("Yes")) {
@@ -41,27 +34,25 @@ public class Main{
                     loop = false;
                 }
                 else{
-                    System.out.println("Would you like to play again?");
-                    response = reader.nextLine();
+                    response = Input("Would you like to play again?");
                 }
             }
-        }*/
+        }
     }
 
 
-    static String Input() {
+    static String Input(String prompt) {
         Scanner reader = new Scanner(System.in);
         //Print the prompt to the screen
-        System.out.println("Please enter a number");
+        System.out.println(prompt);
         String userInput = reader.nextLine();
         return userInput;
     }
 
     //once the user guesses the correct number ask if they would like to play again, exiting if they type "no" restarting if they type"yes"
-    static int IntInput() {
+    static int IntInput(String prompt) {
         //Inputs: string to be used as a prompt
-        String userInput = Input();
-        //get input from the user
+        String userInput = Input(prompt);//get input from the user
         int guess = 0;
         boolean again = true;
         while(again){//this should continue to reprompt the user and get new input until an integer is entered by the user
@@ -70,7 +61,7 @@ public class Main{
                 again = false;
             }
             catch (NumberFormatException wow){
-                userInput = Input();
+                userInput = Input(prompt);
             }
         }
         //Returns: the integer that the user entered
@@ -87,11 +78,11 @@ public class Main{
         int guess;
 
         while(true) {
-            guess = IntInput();//prompt the user to guess a number between 1 and 100 (use IntInput you created to do this)
-            if(guess<=100&& guess >=1){
+            guess = IntInput("Please enter a number between 1 and 100");//prompt the user to guess a number between 1 and 100 (use IntInput you created to do this)
+            if(guess<=100 && guess >=1){
                 break;
             }
-            System.out.println("Please enter a number between 1 and 100");
+
         }
         return guess;//Returns: the number the user entered (should be valid integer between 1-100 at this point)
     }
